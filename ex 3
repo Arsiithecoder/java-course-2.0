@@ -1,0 +1,32 @@
+// The program takes two numbers and subtracts the smaller number from the larger one.
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter two numbers: ");
+        int[] inputValues = readInputValues(scanner);
+        int x = inputValues[0];
+        int y = inputValues[1];
+        int result = 0;
+        
+        if (x > y) {
+            result = x - y;
+        } else if (y > x) {
+            result = y - x;
+        } else {
+            result = 0;
+        }
+        
+        System.out.println("The result of the subtraction is: " + result);
+        scanner.close();
+    }
+    
+    private static int[] readInputValues(Scanner scanner) {
+        int[] values = new int[2];
+        values[0] = scanner.nextInt(); 
+        values[1] = scanner.nextInt(); 
+        return values;
+    }
+}
