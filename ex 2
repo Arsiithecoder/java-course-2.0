@@ -1,0 +1,15 @@
+// This program multiplies two numbers
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int [] inputValues = readInputValues(scanner);
+        int x = inputValues[0];
+        int y = inputValues[1];
+        int result = x * y;
+        System.out.println("The result of the multiplication is: " + result);
+        scanner.close();
+    }
+}
