@@ -1,0 +1,24 @@
+// This program converts hours to seconds
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number of hours: ");
+        int[] inputValues = readInputValues(scanner);
+        int hours = inputValues[0];
+        int seconds = hours * 3600;
+        System.out.println("The number of seconds is: " + seconds);
+        scanner.close();
+
+
+
+    }
+
+    private static int[] readInputValues(Scanner scanner) {
+        int[] values = new int[1];
+        values[0] = scanner.nextInt();
+        return values;
+    }
+}
