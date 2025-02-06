@@ -1,0 +1,23 @@
+// This program reads two numbers from the user and prints the rest of the division of the first number by the second number.
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter two numbers: ");
+        int[] inputValues = readInputValues(scanner);
+        int x = inputValues[0];
+        int y = inputValues[1];
+        int rest = x % y;
+        System.out.println("The rest of the division is: " + rest);
+        scanner.close();
+    }
+
+    private static int[] readInputValues(Scanner scanner) {
+        int[] values = new int[2];
+        values[0] = scanner.nextInt();
+        values[1] = scanner.nextInt();
+        return values;
+    }
+}
