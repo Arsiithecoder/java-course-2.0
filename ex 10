@@ -1,0 +1,25 @@
+// The program checks if two numbers are equal
+
+import java.util.Scanner;
+
+class Project{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter two numbers: ");
+        int [] numbers = inputeNumbers(scanner);
+        int x = numbers[0];
+        int y = numbers[1];
+        boolean result = false;
+        if(x == y){
+            result = true;
+        }
+        System.out.println("Result: " + result);
+        scanner.close();
+    }
+    public static int[] inputeNumbers(Scanner scanner){
+        int [] numbers = new int[2];
+        numbers[0] = scanner.nextInt();
+        numbers[1] = scanner.nextInt();
+        return numbers;
+    }
+}
