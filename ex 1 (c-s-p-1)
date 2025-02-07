@@ -1,0 +1,23 @@
+// The program checks if the number is divisible by 7 and not divisible by 2
+
+import java.util.Scanner;
+
+class Project{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number: ");
+        int [] number = inputNumbers(scanner);
+        int x = number[0];
+        if (x % 7 == 0 && x % 2 != 0){
+            System.out.println("True");
+        }else{
+            System.out.println("False");
+        }
+        scanner.close();
+    }
+    public static int[] inputNumbers(Scanner scanner){
+        int [] numbers = new int[1];
+        numbers[0] = scanner.nextInt();
+        return numbers;
+    }
+}
