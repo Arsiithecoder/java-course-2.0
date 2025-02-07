@@ -1,0 +1,28 @@
+// The program is a simple age classification program.
+
+import java.util.Scanner;
+
+class Project{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the age: ");
+        int  [] numbers = inputNumbers(scanner);
+        int age = numbers[0];
+        if(age >= 18){
+            System.out.println("You are an adult");
+        }else if(age >= 13){
+            System.out.println("You are a teenager");
+        }else if(age >= 0){
+            System.out.println("You are a child");
+        }else{
+            System.out.println("Invalid age");
+        }
+        scanner.close();
+
+    }
+    public static int[] inputNumbers(Scanner scanner){
+        int [] numbers = new int[1];
+        numbers[0] = scanner.nextInt();
+        return numbers;
+    }
+}

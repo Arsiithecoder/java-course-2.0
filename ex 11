@@ -1,0 +1,33 @@
+// The program is a simple role-based access control system.
+
+import java.util.Scanner;
+
+class Project{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number of the role: ");
+        int [] numbers = inputNumbers(scanner);
+        int role = numbers[0];
+       
+        switch(role){
+            case 1:
+                System.out.println("Admin");
+                break;
+            case 2:
+                System.out.println("Moderator");
+                break;
+            case 3:
+                System.out.println("User");
+                break;
+            default:
+                System.out.println("Invalid role");
+                break;
+        }
+        scanner.close();
+    }
+    public static int[] inputNumbers(Scanner scanner){
+        int [] numbers = new int[1];
+        numbers[0] = scanner.nextInt();
+        return numbers;
+    }
+}
