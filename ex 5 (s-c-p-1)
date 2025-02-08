@@ -1,0 +1,22 @@
+// The program checks if the number is positive, negative or 0
+
+import java.util.Scanner;
+
+class Project{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number: ");
+        String[] numbers = scanner.nextLine().split(" ");
+        int n = Integer.parseInt(numbers[0]);
+        if(n == 0){
+            System.out.println("The number equals 0");
+        }
+        else if(n > 0){
+            System.out.println("The number is positive");
+        }
+        else{
+            System.out.println("The number is negative");
+        }
+        scanner.close();
+    }
+}

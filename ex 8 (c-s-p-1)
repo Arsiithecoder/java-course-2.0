@@ -1,0 +1,30 @@
+// The program takes a number and returns the square of the number if it is positive.
+// If the number is negative, it returns a message saying that the number is negative.
+// If the number is zero, it returns a message saying that the number is zero.
+
+
+
+import java.util.Scanner;
+
+class Project{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number: ");
+        String [] Input = scanner.nextLine().split(" ");
+        int number = Integer.parseInt(Input[0]);
+        String result = "";
+        if(number > 0){
+            result = String.valueOf(number * number);
+        }else if(number < 0){
+            result = "The number is negative";
+        }else{
+            result = "The number is zero";
+        }
+
+
+        System.out.println(result);
+        scanner.close();
+
+    }
+
+}

@@ -1,0 +1,47 @@
+// This program is a simple game where the player can move in a 2D grid.
+
+import java.util.Scanner;
+
+class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter the position of the player: ");
+        String[] playerPosition = scanner.nextLine().split(" ");
+        int x = Integer.parseInt(playerPosition[0]);
+        int y = Integer.parseInt(playerPosition[1]);
+        
+        System.out.println("Enter the direction of the player: ");
+        String direction = scanner.nextLine().toLowerCase();
+        
+        // Use the movePlayer method instead of duplicate code
+        int[] newPosition = movePlayer(x, y, direction);
+        x = newPosition[0];
+        y = newPosition[1];
+        
+        System.out.println("Player moved " + direction + " to coordinates: " + x + ";" + y);
+        
+        scanner.close();
+    }
+    
+    public static int[] movePlayer(int x, int y, String direction) {
+        switch(direction) {
+            case "up":
+                y++;
+                break;
+            case "down":
+                y--;
+                break;
+            case "left":
+                x--;
+                break;
+            case "right":
+                x++;
+                break;
+            default:
+                System.out.println("Invalid direction");
+                break;
+        }
+        return new int[]{x, y};
+    }
+}
