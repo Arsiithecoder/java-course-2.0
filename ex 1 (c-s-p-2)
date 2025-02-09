@@ -1,0 +1,21 @@
+// The program solves the riddle of the hats
+
+import java.util.Scanner;
+
+class Project{
+
+    public static void main(String[] args) {
+        
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.println("Enter the number of people: ");
+        int numPeople = scanner.nextInt();
+        int result = 1;
+        for(int i = 1; i <= numPeople; i++){
+            result *= i;
+        }
+        result = (int)Math.round(result/Math.E);
+        System.out.println("The number of ways to arrange the hats is " + result);
+    }
+}
