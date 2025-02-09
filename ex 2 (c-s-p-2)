@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the message: ");
+        String message = scanner.nextLine();
+        
+        System.out.println("Enter the number: ");
+        int k = scanner.nextInt();
+
+        String result = "";
+        int len = message.length();
+
+        if (k > 0) {
+            result = message.repeat(k);
+        } else if (k == 0) {
+            result = "";
+        } else {
+            int n = -k;
+            if (len % n != 0) {
+                result = "No solution";
+            } else {
+                int candidateLength = len / n;
+                String candidate = message.substring(0, candidateLength);
+                if (candidate.repeat(n).equals(message)) {
+                    result = candidate;
+                } else {
+                    result = "NO SOLUTION";
+                }
+            }
+        }
+
+        System.out.println(result);
+        scanner.close();
+    }
+}
