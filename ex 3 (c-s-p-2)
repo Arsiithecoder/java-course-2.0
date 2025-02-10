@@ -1,0 +1,44 @@
+// The easy game of the dragon and the prince
+// The prince can save the princess if he can cut off all the dragon's heads
+// The prince can cut off the dragon's head with his sword
+// The dragon can recover his head with his magic
+// The prince can swing his sword 2 times
+// If the prince can't save the princess, he will die
+
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number of dragon's heads which the blade takes at one time: ");
+        int shot = scanner.nextInt();
+        System.out.println("Enter the number of dragon's heads: ");
+        int heads = scanner.nextInt();
+        System.out.println("Enter the number of heads which the dragon can recover at one time: ");
+        int recover = scanner.nextInt();
+
+        StringBuilder result = new StringBuilder();
+        int count = 0;
+        int headStart = heads;
+
+        while (heads > 0) {
+            heads -= shot;
+            count++;
+            if (heads > 0) {
+                heads += recover;
+            }
+            if (count > 2 && heads > headStart) {
+                result.append("Prince can't save the princess");
+                break;
+            }
+        }
+
+        if (heads <= 0) {
+            result.append(count);
+        }
+
+        System.out.println("The number of times the blade must be swung to cut off all the heads is: " + result.toString());
+        scanner.close();
+    }
+}
