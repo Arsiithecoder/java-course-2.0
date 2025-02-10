@@ -1,0 +1,42 @@
+// The program checks if the number has a break point
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a number: ");
+        int n = scanner.nextInt();
+        boolean result = hasBreakPoint(n);
+        System.out.println("Has break point: " + result);
+
+    }
+
+    public static boolean hasBreakPoint(int n) {
+        String number = String.valueOf(n);
+        int length = number.length();
+
+        for (int i = 1; i < length; i++) {
+            int SumOne = 0;
+            int SumTwo = 0;
+
+
+            for (int j = 0; j < i; j++) {
+                SumOne += Character.getNumericValue(number.charAt(j));
+            }
+
+
+            for (int j = i; j < length; j++) {
+                SumTwo += Character.getNumericValue(number.charAt(j));
+            }
+
+
+            if (SumOne == SumTwo) {
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+}
