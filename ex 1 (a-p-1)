@@ -1,0 +1,26 @@
+// The program checks if all numbers in the array are even.
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the array of numbers: ");
+        String input = scanner.nextLine();
+
+        String[] numbers = input.split(" ");
+
+        int[] array = new int[numbers.length];
+        String result = "";
+        for (int i = 0; i < numbers.length; i++) {
+            array[i] = Integer.parseInt(numbers[i]);
+            if (array[i] % 2 == 0) {
+                result = "All numbers are even";
+            } else {
+                result = "Some numbers are not even";
+            }
+        }
+        System.out.println(result);
+    }
+}
