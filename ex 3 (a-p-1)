@@ -1,0 +1,39 @@
+// The program checks if all numbers in the array are greater than or equal to the number,which is inputed by the user.
+
+import java.util.Scanner;
+
+public class Project {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the array of numbers: ");
+        String input = scanner.nextLine();
+
+        String[] numbers = input.split(" ");
+        int[] array = new int[numbers.length];
+
+        System.out.println("Enter the number for checking: ");
+        int number = scanner.nextInt();
+
+        boolean allGreaterOrEqual = true;
+        boolean someLess = false;
+
+        for (int i = 0; i < numbers.length; i++) {
+            array[i] = Integer.parseInt(numbers[i]);
+
+            if (array[i] < number) {
+                allGreaterOrEqual = false;
+                someLess = true;
+            }
+        }
+
+        if (allGreaterOrEqual) {
+            System.out.println("All numbers in the array are greater than or equal to the number");
+        } else if (someLess) {
+            System.out.println("Some numbers in the array are less than the number");
+        }
+
+        scanner.close();
+    }
+}
