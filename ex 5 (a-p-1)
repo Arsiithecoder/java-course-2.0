@@ -1,0 +1,31 @@
+// This program reverses the names of the students and prints them in a comma-separated format.
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the names of the students: ");
+        String[] names = scanner.nextLine().split(", |  | ," );
+
+        String stringBuilder = reverseString(names);
+
+        System.out.println(stringBuilder);
+
+        scanner.close();
+    }
+
+    public static String reverseString(String[] names) {
+        StringBuilder result = new StringBuilder();
+        
+        for (int i = names.length - 1; i >= 0; i--) {
+            result.append(names[i]);
+            if (i > 0) {
+                result.append(",");
+            }
+        }
+        
+        return result.toString();
+    }
+}
