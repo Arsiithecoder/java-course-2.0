@@ -1,0 +1,29 @@
+// This program takes a list of numbers and prints them in a comma-separated format without using Arrays.toString()
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the array of numbers:  ");
+        String[] numbers = scanner.nextLine().split(", |, | ");
+
+        int[] numbersArray = new int[numbers.length];
+        for (int i = 0; i < numbers.length; i++) {
+            numbersArray[i] = Integer.parseInt(numbers[i]);
+        }
+
+        Arrays.sort(numbersArray);
+        for (int i = 0; i < numbersArray.length; i++) {
+            System.out.print(numbersArray[i]);
+            if (i < numbersArray.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+
+        scanner.close();
+    }
+}
