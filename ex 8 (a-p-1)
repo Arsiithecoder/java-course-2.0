@@ -1,0 +1,30 @@
+// The code below takes a list of numbers and prints them in a comma-separated format without using Arrays.toString() and without duplicates.
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the array of numbers:  ");
+        String[] numbers = scanner.nextLine().split(", |, | ");
+
+        int[] numbersArray = new int[numbers.length];
+        for (int i = 0; i < numbers.length; i++) {
+            numbersArray[i] = Integer.parseInt(numbers[i]);
+        }
+
+        Arrays.sort(numbersArray);
+        
+        System.out.print(numbersArray[0]);
+        
+        for (int i = 1; i < numbersArray.length; i++) {
+            if (numbersArray[i] != numbersArray[i-1]) {
+                System.out.print(", " + numbersArray[i]);
+            }
+        }
+        System.out.println();
+
+        scanner.close();
+    }
+}
