@@ -1,0 +1,40 @@
+// This program takes an array of names from the user and sorts them alphabetically.
+// It also removes [] and "" from the input and splits the input by , or space.
+// Then it counts the frequency of each name and prints the result.
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeSet;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the array of names: ");
+        String input = scanner.nextLine();
+
+        input = input.replaceAll("[\\[\\]\"]", ""); 
+        String[] names = input.split(",\\s*|\\s+");
+
+        // Create a HashMap to store word frequencies
+        Map<String, Integer> wordCount = new HashMap<>();
+        
+        // Count frequencies
+        for (String name : names) {
+            wordCount.put(name, wordCount.getOrDefault(name, 0) + 1);
+        }
+        
+        // Sort and print results
+        Arrays.sort(names);
+        for (String name : new TreeSet<>(Arrays.asList(names))) {
+            System.out.print(name + ": " + wordCount.get(name));
+            if (name != names[names.length - 1]) {
+                System.out.print(", ");
+            }
+        }
+
+        scanner.close();
+    }
+}
