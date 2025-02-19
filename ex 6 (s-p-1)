@@ -1,0 +1,14 @@
+//This program checks if the string ends with a slash "/"
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the URL of the website: ");
+        String message = scanner.nextLine();
+        boolean result = message.endsWith("/");
+        
+        System.out.println("Does the string end with '/': " + result);
+    }
+}
