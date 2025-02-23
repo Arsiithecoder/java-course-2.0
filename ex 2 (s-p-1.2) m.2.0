@@ -1,0 +1,26 @@
+// This program counts the number of lowercase letters in a message.
+//Model 2.0
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the message: ");
+        String message = scanner.nextLine();
+        StringBuilder result = new StringBuilder();
+        
+        for (int i = 0; i < message.length(); i++) {
+            char c = message.charAt(i);
+            if (Character.isLowerCase(c)) {
+                result.append(c);
+                if (i < message.length() - 1 && Character.isLowerCase(message.charAt(i + 1))) {
+                    result.append(", ");
+                }
+            }
+        }
+        
+        System.out.println(result.toString());
+        scanner.close();
+    }
+}
