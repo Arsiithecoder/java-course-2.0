@@ -1,0 +1,25 @@
+
+// This program takes a sentence from the user and counts the number of lowercase letters in it.
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the sentence: ");
+        String sentence = scanner.nextLine();
+
+        int commonsLetters = 0;
+        
+        for (char letter : sentence.toCharArray()) {
+            if (Character.isLowerCase(letter)) {
+                commonsLetters++;
+            }
+        }
+
+        System.out.println("Number of commons letters: " + commonsLetters);
+
+        scanner.close();
+    }
+}

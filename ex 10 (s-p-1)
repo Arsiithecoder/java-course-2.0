@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a URL: ");
+        String message = scanner.nextLine();
+        
+        boolean result = message.startsWith("https://");
+        
+        System.out.println("Does the message start with 'https://'?: " + result);
+        
+        scanner.close();
+    }
+}

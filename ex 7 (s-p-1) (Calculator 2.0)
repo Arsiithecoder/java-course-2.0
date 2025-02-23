@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the array of integers:");
+        String[] input = scanner.nextLine().split(", | ,| , |,| ");
+        int sum = 0;
+        System.out.println("Enter the action:");
+        String action = scanner.nextLine();
+        int[] arr = new int[input.length];
+
+        for (int i = 0; i < input.length; i++) {
+            arr[i] = Integer.parseInt(input[i]);
+        }
+
+        switch (action) {
+            case "+":
+                for (int num : arr) {
+                    sum += num;
+                }
+                break;
+            case "-":
+                sum = arr[0];
+                for (int i = 1; i < arr.length; i++) {
+                    sum -= arr[i];
+                }
+                break;
+            case "*":
+                sum = 1;
+                for (int num : arr) {
+                    sum *= num;
+                }
+                break;
+            case "/":
+                sum = arr[0];
+                for (int i = 1; i < arr.length; i++) {
+                    sum /= arr[i];
+                }
+                break;
+            default:
+                System.out.println("Invalid action.");
+                return;
+        }
+
+        System.out.println("The result of the action on the array is: " + sum);
+        scanner.close();
+    }
+}

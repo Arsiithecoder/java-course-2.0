@@ -1,0 +1,26 @@
+// This program takes a sentence from the user and counts the number of words in it.
+// It uses UTF-8 encoding to read the input on other languages.
+
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
+
+        System.out.println("Enter the sentence: ");
+        String sentence = scanner.nextLine();
+
+        int wordsCount = 0;
+
+        for (int i = 0; i < sentence.length(); i++) {
+            if (sentence.charAt(i) == ' ') {
+                wordsCount++;
+            }
+        }
+
+        System.out.println("Number of words in the sentence: " + (wordsCount + 1));
+
+        scanner.close();
+    }
+}
