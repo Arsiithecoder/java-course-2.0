@@ -1,0 +1,24 @@
+// Count the number of letters in each word of the message
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the message: ");
+        String [] message = scanner.nextLine().split("\\s+");
+        int [] counts = new int[message.length];
+        for (int i = 0; i < message.length; i++) {
+            int count = 0;
+            for (int j = 0; j < message[i].length(); j++) {
+                if (Character.isLetter(message[i].charAt(j))) {
+                    count++;
+                }
+            }
+            counts[i] = count;
+        }
+        System.out.println(Arrays.toString(counts));
+        scanner.close();
+    }
+}

@@ -1,0 +1,22 @@
+// This program finds the first double letter in a word and returns it.
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the word: ");
+        String word = scanner.nextLine();
+        HashMap<String, Integer> doubleLetters = new HashMap<>();
+        String result = "";
+        for (int i = 0; i < word.length() - 1; i++) {
+            if (word.charAt(i) == word.charAt(i + 1)) {
+                doubleLetters.put(String.valueOf(word.charAt(i)), doubleLetters.getOrDefault(String.valueOf(word.charAt(i)), 0) + 1);
+                result = String.valueOf(word.charAt(i));
+            }
+        }
+        System.out.println("The first double letter in the word is: " + result);
+        scanner.close();
+    }
+}
