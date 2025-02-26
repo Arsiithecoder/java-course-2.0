@@ -1,0 +1,25 @@
+// This program converts a text into an HTML tag
+//First time using String.join()
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the text: ");
+        
+        String message = scanner.nextLine();
+        
+        String[] parts = message.split("\\.");
+        
+        String tagname = parts[0];
+        String classes = String.join(" ", Arrays.copyOfRange(parts, 1, parts.length));
+
+        String result = "<" + tagname + " class=\"" + classes + "\"></" + tagname + ">";
+
+        System.out.println(result);
+
+        scanner.close();
+    }
+}
