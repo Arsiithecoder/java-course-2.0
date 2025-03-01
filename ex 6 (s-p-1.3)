@@ -1,0 +1,65 @@
+// This program converts a text to a specified pattern.
+//You can choose from the following patterns:
+//kebab-case
+//snake_case
+//lowerCamelCase
+//UpperCamelCase
+
+import java.util.Scanner;
+
+public class Program {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the text: ");
+        String text = scanner.nextLine().trim();
+
+        System.out.println("Enter the pattern: ");
+        String pattern = scanner.nextLine().trim();
+
+        String[] parts = text.split("(?=[A-Z])|_|-|\s+");
+
+        switch (pattern) {
+            case "kebab-case":
+                for (int i = 0; i < parts.length; i++) {
+                    System.out.print(parts[i].toLowerCase());
+                    if (i < parts.length - 1) {
+                        System.out.print("_");
+                    }
+                }
+                break;
+
+            case "snake_case":
+                for (int i = 0; i < parts.length; i++) {
+                    System.out.print(parts[i].toLowerCase());
+                    if (i < parts.length - 1) {
+                        System.out.print("-");
+                    }
+                }
+                break;
+
+            case "lowerCamelCase":
+                System.out.print(parts[0].toLowerCase());
+                for (int i = 1; i < parts.length; i++) {
+                    System.out.print(capitalize(parts[i]));
+                }
+                break;
+
+            case "UpperCamelCase":
+                for (String part : parts) {
+                    System.out.print(capitalize(part));
+                }
+                break;
+
+            default:
+                System.out.println("Invalid pattern");
+                return;
+        }
+
+        System.out.println();
+    }
+
+    private static String capitalize(String str) {
+        if (str.isEmpty()) return "";
+        return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
+    }
+}   
