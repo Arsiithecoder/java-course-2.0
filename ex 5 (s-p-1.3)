@@ -1,0 +1,20 @@
+// The program takes a text and prints it with underscores between words.
+
+import java.util.Scanner;
+
+public class Program {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the text: ");
+        String text = scanner.nextLine();
+        String [] words = text.split("(?=[A-Z])");
+        for (int i = 0; i < words.length; i++) {
+            words[i] = words[i].toLowerCase();
+            System.out.print(words[i]); 
+            if (i < words.length - 1) {
+                System.out.print("_");
+            }
+        }
+        scanner.close();
+    }
+}
