@@ -1,0 +1,27 @@
+// The program checks if the first and the last letter of the word are the same.
+
+import java.util.Scanner;
+
+public class Program {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a word: ");
+        String text = scanner.nextLine().toLowerCase();
+        String[] words = text.split(" ");
+        StringBuilder sb = new StringBuilder();
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                char firstLetter = word.charAt(0);
+                char lastLetter = word.charAt(word.length() - 1);
+                if (firstLetter == lastLetter) {
+                    sb.append("The first and the last letter of the word " + word + " are the same.");
+                }
+                else {
+                    sb.append("The first and the last letter of the word " + word + " are not the same.");
+                }
+            }
+        }
+        System.out.println(sb.toString());
+        scanner.close();
+    }
+}
