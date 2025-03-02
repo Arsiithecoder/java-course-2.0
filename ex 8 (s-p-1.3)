@@ -1,0 +1,22 @@
+//The program finds the shortest word in the text and prints it and its length.
+import java.util.Scanner;
+
+public class Program {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a text: ");
+        String text = scanner.nextLine().toLowerCase();
+        String[] words = text.split(" |,|\\.|!|\\?");
+        int counter = 0;
+        String shortestWord = words[0];
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                if (word.length() < shortestWord.length()) {
+                    shortestWord = word;
+                }
+            }
+        }
+        System.out.println("The shortest word is: " + shortestWord + " and its length is: " + shortestWord.length());
+        scanner.close();
+    }   
+}
