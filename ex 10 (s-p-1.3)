@@ -1,0 +1,23 @@
+//The program will find the longest word in a text
+
+import java.util.Scanner;
+
+public class Program {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a text: ");
+        String text = scanner.nextLine().toLowerCase();
+        String[] words = text.split(" |,|\\.|!|\\?");
+        int counter = 0;
+        String longestWord = words[0];
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                if (word.length() >= longestWord.length()) {
+                    longestWord = word;
+                }
+            }
+        }
+        System.out.println("The longest word is: " + longestWord + " and its length is: " + longestWord.length());
+        scanner.close();
+    }   
+}
