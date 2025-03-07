@@ -1,0 +1,24 @@
+// This program changes first letter of each word to uppercase
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your text: ");
+        String message = scanner.nextLine(); 
+        String[] words = message.split(" ");
+        StringBuilder result = new StringBuilder();
+
+        for (String word : words) { 
+            if (word.length() > 0) { 
+                result.append(Character.toUpperCase(word.charAt(0))); 
+                result.append(word.substring(1)); 
+                result.append(" "); 
+            }
+        }
+        result = new StringBuilder(result.toString().trim()); 
+
+        System.out.println("Result: " + result);
+    }
+}

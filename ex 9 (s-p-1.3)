@@ -1,0 +1,14 @@
+//The program will remove all the special characters from the message
+
+import java.util.Scanner;
+
+public class Program {
+    public static void main(String[] args) {
+        System.out.println("Enter a message: ");
+        Scanner scanner = new Scanner(System.in);
+        String message = scanner.nextLine();
+        String result = message.replaceAll("[#@$%]", "");
+        System.out.println(result);
+        scanner.close();
+    }
+}

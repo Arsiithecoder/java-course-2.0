@@ -1,0 +1,24 @@
+// The program changes the case of the letters in the text
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your text: ");
+        String message = scanner.nextLine(); 
+        String result = ""; 
+
+        for (char c : message.toCharArray()) { 
+            if (Character.isLowerCase(c)) { 
+                result += Character.toUpperCase(c); 
+            } else if (Character.isUpperCase(c)) { 
+                result += Character.toLowerCase(c); 
+            } else {
+                result += c; 
+            }
+        }
+
+        System.out.println("Result: " + result);
+    }
+}

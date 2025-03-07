@@ -1,0 +1,22 @@
+// The program removes every third character from the word
+
+import java.util.Scanner;
+
+public class Program {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the word: ");
+        String word = scanner.nextLine();
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < word.length(); i++) {
+            if (i == 0 || (i + 1) % 3 != 0) {
+                sb.append(word.charAt(i));
+            }
+        }
+
+        System.out.println(sb);
+        scanner.close();
+    }
+}

@@ -1,0 +1,26 @@
+//The program checks if the first and the last letter of the word in the text are the same.
+//The program counts the number of words that have the same first and last letter.
+
+import java.util.Scanner;
+
+public class Program {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a text: ");
+        String text = scanner.nextLine().toLowerCase();
+        String[] words = text.split(" ");
+        StringBuilder sb = new StringBuilder();
+        int counter = 0;
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                char firstLetter = word.charAt(0);
+                char lastLetter = word.charAt(word.length() - 1);
+                if (firstLetter == lastLetter) {
+                    counter++;
+                }
+            }
+        }
+        System.out.println("The number of words that have the same first and last letter is: " + counter);
+        scanner.close();
+    }
+}
