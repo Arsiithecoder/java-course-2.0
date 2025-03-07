@@ -1,0 +1,23 @@
+// The program masks all the letters except the last 4 letters of the word
+
+import java.util.Scanner;
+
+public class Program {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the word: ");
+        String message = scanner.nextLine();
+        
+        String result = maskString(message);
+        System.out.println(result);
+    }
+
+    public static String maskString(String message) {
+        if (message.length() <= 4) {
+            return message;
+        }
+        
+        int maskLength = message.length() - 4;
+        return "#".repeat(maskLength) + message.substring(maskLength);
+    }
+}
