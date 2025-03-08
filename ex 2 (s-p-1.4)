@@ -1,0 +1,35 @@
+/*The program takes a word and prints the word with the uppercase letters in the beginning,
+which are sorted alphabetically 
+and the rest of the word in lowercase
+ */ 
+
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the word: ");
+        String word = scanner.nextLine();
+        String result1 = "";
+        String result2;
+
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            if (Character.isUpperCase(c)) {
+                result1 += c;
+            }
+        }
+
+        char[] result1Array = result1.toCharArray();
+        Arrays.sort(result1Array);
+        result1 = new String(result1Array);
+
+        result2 = word.replaceAll("[A-Z]", "");
+
+        System.out.print(result1 + result2);
+        scanner.close();
+    }
+}
