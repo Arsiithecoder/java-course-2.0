@@ -1,0 +1,35 @@
+// The program checks if there are opening and closing brackets in the text or not
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the text: ");
+        String text = scanner.nextLine();
+
+        boolean hasOpeningBracket = false;
+        boolean hasClosingBracket = false;
+
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == '[') {
+                hasOpeningBracket = true;
+            }
+            if (text.charAt(i) == ']') {
+                hasClosingBracket = true;
+            }
+        }
+
+        if (!hasOpeningBracket && !hasClosingBracket) {
+            System.out.println("There are no brackets in the text");
+        } else if (hasOpeningBracket && !hasClosingBracket) {
+            System.out.println("There is an opening bracket, but no closing one");
+        } else if (!hasOpeningBracket && hasClosingBracket) {
+            System.out.println("There is a closing bracket, but no opening one");
+        } else {
+            System.out.println("There are opening and closing brackets in the text");
+        }
+
+        scanner.close();
+    }
+}
