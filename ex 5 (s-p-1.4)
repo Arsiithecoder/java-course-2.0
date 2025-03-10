@@ -1,0 +1,23 @@
+// The program counts the number of symbols at all and the number of symbols before 0 in the text
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the text: ");
+        String text = scanner.nextLine();
+
+        int symbolsCount = 0;
+        int nullCount = 0;
+        for(int i = 0; i < text.length(); i++){
+            if(text.charAt(i) == '+' || text.charAt(i) == '-'){
+                symbolsCount++;
+            }else if(text.charAt(i) == '0' && (text.charAt(i - 1) == '-' || text.charAt(i - 1) == '+')){
+                nullCount++;
+            }
+        }
+        System.out.println("Symbols count: " + symbolsCount + " and symbols before 0: " + nullCount);
+        scanner.close();
+    }
+}
