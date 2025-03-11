@@ -1,0 +1,32 @@
+// This program finds the longest sequence of digits in the text
+//The first time I used Matcher and Pattern
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the text: ");
+        String message = scanner.nextLine();
+        scanner.close();
+
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher = pattern.matcher(message);
+
+        String longestNumber = "";
+        
+        while (matcher.find()) {
+            String number = matcher.group();
+            if (number.length() > longestNumber.length()) {
+                longestNumber = number;
+            }
+        }
+
+        if (!longestNumber.isEmpty()) {
+            System.out.println("The longest sequence of digits: " + longestNumber);
+        } else {
+            System.out.println("No numbers found in the input.");
+        }
+    }
+}
