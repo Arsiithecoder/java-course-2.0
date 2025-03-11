@@ -1,0 +1,13 @@
+// This program removes extra spaces from the text
+
+import java.util.Scanner;
+
+public class Project{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the text: ");
+        String text = scanner.nextLine();
+        String result = text.trim().replaceAll(" +", " ");
+        System.out.println(result);
+    }
+}
