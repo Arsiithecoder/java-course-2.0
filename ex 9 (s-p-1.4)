@@ -1,0 +1,23 @@
+//This program finds the sum of all numbers in the text
+
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the text: ");
+        String message = scanner.nextLine();
+        scanner.close();
+
+        Pattern pattern = Pattern.compile("\\d");
+        Matcher matcher = pattern.matcher(message);
+        int result = 0;
+        while (matcher.find()) {
+            int number = Integer.parseInt(matcher.group());
+            result += number;
+        }
+        System.out.println("The sum of all numbers in the text is: " + result);
+    }
+}
