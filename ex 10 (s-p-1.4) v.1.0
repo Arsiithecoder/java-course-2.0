@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the whole message:");
+        String message1 = scanner.nextLine();
+        System.out.print("Enter the word or a couple of words,which u're looking for:");
+        String message2 = scanner.nextLine();
+        scanner.close();
+        
+        String shorter, longer;
+        if (message1.length() <= message2.length()) {
+            shorter = message1;
+            longer = message2;
+        } else {
+            shorter = message2;
+            longer = message1;
+        }
+        
+        boolean result = longer.contains(shorter);
+        System.out.println(result);
+    }
+}
