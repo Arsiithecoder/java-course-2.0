@@ -1,0 +1,19 @@
+// This program takes a path to a file and returns the name of the file without the extension.
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the path to the file:");
+        String path = scanner.nextLine();
+        scanner.close();
+
+        int lastSlashIndex = path.lastIndexOf('/');
+        String fileNameWithExt = path.substring(lastSlashIndex + 1);
+
+        int dotIndex = fileNameWithExt.lastIndexOf('.');
+        String result = (dotIndex != -1) ? fileNameWithExt.substring(0, dotIndex) : fileNameWithExt;
+        System.out.println("The name of the file is: " + result);
+    }
+}
