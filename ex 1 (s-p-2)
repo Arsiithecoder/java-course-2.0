@@ -1,0 +1,31 @@
+//The program takes a message and creates 5 hashtags from it
+//The hashtags are created from the last 5 words in the message
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a text: ");
+        String message = scanner.nextLine();
+        String result = createHashtags(message);
+        System.out.println(result);
+    }
+
+    public static String createHashtags(String message) {
+        String[] tokens = message.split("\\s+");
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+
+        for (int i = tokens.length - 1; i >= 0; i--) {
+            String word = tokens[i].replaceAll("[^A-Za-z]", "");
+            if (word.length() >= 5) {
+                sb.append("#").append(word.toLowerCase()).append(" ");
+                count++;
+                if (count == 5) {
+                    break;
+                }
+            }
+        }
+        return sb.toString().trim();
+    }
+}
