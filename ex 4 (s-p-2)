@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the text: ");
+        String text = scanner.nextLine();
+        scanner.close ();
+        
+        String previous;
+        do {
+            previous = text;
+            text = text.replaceAll("\\([^()]*\\)", "");
+        } while (!text.equals(previous));
+        
+        System.out.println(text);
+    }
+}
