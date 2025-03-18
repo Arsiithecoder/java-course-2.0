@@ -1,0 +1,23 @@
+// This program helps to decrypt the text by removing the letters o, O, f, F, g, G and get the original text
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the text: ");
+        String text = scanner.nextLine();
+        scanner.close();
+
+        String result = "";
+
+        char[] chars = text.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            char c = chars[i];
+            if (c != 'o' && c != 'O' && c != 'f' && c != 'F' && c != 'g' && c != 'G') {
+                result += c;
+            }
+        }
+        System.out.println(result);  
+    }
+}
