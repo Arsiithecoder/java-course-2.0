@@ -1,0 +1,41 @@
+// The program finds letters, which are not repeated in the text.
+
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the text: ");
+        String text = scanner.nextLine();
+        String[] words = text.split(" ");
+        scanner.close();
+
+        String letter = "";
+        StringBuilder result = new StringBuilder();
+
+        // First, count all letter occurrences
+        HashMap<String, Integer> letterCount = new HashMap<>();
+        for (String word : words) {
+            for (char c : word.toCharArray()) {
+                if (Character.isLetter(c)) {
+                    letter = String.valueOf(c).toLowerCase();
+                    letterCount.put(letter, letterCount.getOrDefault(letter, 0) + 1);
+                }
+            }
+        }
+
+        for (String word : words) {
+            for (char c : word.toCharArray()) {
+                if (Character.isLetter(c)) {
+                    letter = String.valueOf(c).toLowerCase();
+                    if (letterCount.get(letter) == 1) {
+                        result.append(letter);
+                    }
+                }
+            }
+        }
+
+        System.out.println("Letters, which are not repeated: " + result);
+    }
+}
