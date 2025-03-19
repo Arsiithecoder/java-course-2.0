@@ -1,0 +1,52 @@
+//This program counts the words that are repeated in two text
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter the first text:");
+        String message1 = scanner.nextLine();
+        
+        System.out.println("Enter the second text:");
+        String message2 = scanner.nextLine();
+        
+        scanner.close();
+        
+        String result = countWords(message1, message2);
+        System.out.println(result);
+    }
+    
+    public static String countWords(String message1, String message2) {
+        String[] words1 = message1.split("\\s+");
+        String[] words2 = message2.split("\\s+");
+        
+        Map<String, Integer> wordCounts = new LinkedHashMap<>();
+        for (String word : words1) {
+            if (!word.isEmpty()) {
+                wordCounts.put(word, 0);
+            }
+        }
+        
+        for (String word : words2) {
+            if (wordCounts.containsKey(word)) {
+                wordCounts.put(word, wordCounts.get(word) + 1);
+            }
+        }
+        
+        StringBuilder result = new StringBuilder();
+        boolean first = true;
+        for (Map.Entry<String, Integer> entry : wordCounts.entrySet()) {
+            if (!first) {
+                result.append(", ");
+            }
+            result.append(entry.getKey()).append(": ").append(entry.getValue());
+            first = false;
+        }
+        
+        return result.toString();
+    }
+}
