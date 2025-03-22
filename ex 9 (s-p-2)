@@ -1,0 +1,32 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Deque<Character> stack = new ArrayDeque<>();
+        
+        System.out.println("Enter your text:");
+        String text = scanner.nextLine();
+        boolean checker = false;
+        scanner.close();
+        
+        for(char ch : text.toCharArray()){
+            if(ch == '('){
+                stack.push(ch);
+            } else if (ch == ')'){
+                if(stack.isEmpty()){
+                    checker = false;
+                    System.out.println("code is incorrect");
+                    return;
+                } else {
+                    stack.pop();
+                }
+            }
+        }
+        
+        checker = stack.isEmpty();
+        System.out.println(checker ? "code is correct" : "code is incorrect");
+    }
+}
