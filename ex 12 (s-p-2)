@@ -1,0 +1,25 @@
+// This program reads a text from the console, removes punctuation marks and extra spaces, and outputs the text without words of length 1.
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the text:");
+        String text = scanner.nextLine();
+        text = text.replaceAll("[;:,!?\\.]", "");
+        text = text.replaceAll("\\s+", " ");
+        String[] words = text.split (" ");
+        StringBuilder sb = new StringBuilder();
+        scanner.close();
+
+        for (String word : words){
+            if (word.length() > 1){
+                sb.append(word).append(" ");
+            }
+        }
+        String result = sb.toString().trim();
+        System.out.println(result);
+    }
+}
