@@ -1,0 +1,77 @@
+// Calculator v.2.0
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Deque<Double> deque = new ArrayDeque<>();
+        System.out.println("Enter the text:");
+        String text = scanner.nextLine();
+
+        for (char ch : text.toCharArray()) {
+            if (Character.isDigit(ch)) {
+                deque.add((double) Character.getNumericValue(ch));
+            } else if (ch == '+') {
+                if (deque.size() < 2) {
+                    System.out.println("Error: not enough operands");
+                    return;
+                }
+                double b = deque.pop();
+                double a = deque.pop();
+                deque.push(a + b);
+            } else if (ch == '-') {
+                if (deque.size() < 2) {
+                    System.out.println("Error: not enough operands");
+                    return;
+                }
+                double b = deque.pop();
+                double a = deque.pop();
+                deque.push(a - b);
+            } else if (ch == '*') {
+                if (deque.size() < 2) {
+                    System.out.println("Error: not enough operands");
+                    return;
+                }
+                double b = deque.pop();
+                double a = deque.pop();
+                deque.push(a * b);
+            } else if (ch == '/') {
+                if (deque.size() < 2) {
+                    System.out.println("Error: not enough operands");
+                    return;
+                }
+                double a = deque.pop();
+                double b = deque.pop();
+                if (b == 0) {
+                    System.out.println("Error: division by zero");
+                    return;
+                }
+                deque.push(a / b);
+            } else if (ch == '%') {
+                if (deque.size() < 2) {
+                    System.out.println("Error: not enough operands");
+                    return;
+                }
+                double b = deque.pop();
+                double a = deque.pop();
+                deque.push(a % b);
+            } else if (ch == '^') {
+                if (deque.size() < 2) {
+                    System.out.println("Error: not enough operands");
+                    return;
+                }
+                double b = deque.pop();
+                double a = deque.pop();
+                deque.push(Math.pow(a, b));
+            }
+        }
+        if (deque.size() != 1) {
+            System.out.println("Error: invalid postfix expression");
+        } else {
+            System.out.println(deque.pop());
+        }
+    }
+}
