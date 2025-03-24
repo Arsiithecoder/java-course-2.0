@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class PasswordValidator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter your password:");
+        String password = scanner.nextLine();
+        scanner.close();
+
+        if (isValidPassword(password)) {
+            System.out.println("Password is valid");
+        } else {
+            System.out.println("Password must be at least 8 characters long and contain both letters and digits");
+        }
+    }
+
+    public static boolean isValidPassword(String password) {
+        if (password.length() < 8) {
+            return false;
+        }
+
+        boolean hasDigit = false;
+        boolean hasLetter = false;
+
+        for (char ch : password.toCharArray()) {
+            if (Character.isDigit(ch)) {
+                hasDigit = true;
+            } else if (Character.isLetter(ch)) {
+                hasLetter = true;
+            }
+              if (hasDigit && hasLetter) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
