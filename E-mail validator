@@ -1,0 +1,53 @@
+//E-mail validation
+//The program checks if the entered E-mail is valid or not.
+
+import java.util.Scanner;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter your E-mail:");
+        String email = scanner.nextLine();
+        int atIndex = email.indexOf ("@");
+        String localPart = email.substring(0, atIndex);
+        String domainPart = email.substring(atIndex + 1);
+        scanner.close();
+
+        if (atIndex == -1) {
+            System.out.println("Invalid E-mail");
+            return;
+        } if (domainPart.length() < 1 || domainPart.length() > 64) {
+            System.out.println("Invalid E-main.Domain part length issue");
+            return;
+        }
+        String localPartRegex = "^(?![-._])[A-Za-z0-9-._]+(?<![-._])$";
+        if (!localPart.matches(localPartRegex)) {
+            System.out.println("Invalid E-mail: local part format issue");
+            scanner.close();
+            return;
+        }
+        if (!domainPart.matches("^[A-Za-z0-9.]+$")) {
+            System.out.println("Invalid E-mail: domain contains invalid characters");
+             return;
+        }
+        if (domainPart.startsWith(".") || domainPart.endsWith(".")) {
+            System.out.println("Invalid E-mail: domain starts or ends with a dot");
+              return;
+        }
+        if (domainPart.contains("..")) {
+            System.out.println("Invalid E-mail: domain contains consecutive dots");
+             return;
+        }
+        if (!domainPart.contains(".")) {
+            System.out.println("Invalid E-mail: domain must contain at least one dot");
+            return;
+        }
+        if (domainPart.length() > 63) {
+            System.out.println("Invalid E-mail: domain length exceeds 63 characters");
+            return;
+        } else {
+            System.out.println("Valid E-mail");
+        }
+    }
+}
