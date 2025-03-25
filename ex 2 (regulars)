@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Project {
+    public static boolean validateCardNumber(String cardNumber) {
+        if (cardNumber == null) {
+            return false;
+        }
+        
+        if (!cardNumber.matches("\\d{4}-\\d{4}-\\d{4}-\\d{4}")) {
+            return false;
+        }
+        
+        if (cardNumber.length() != 19) {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the number of the card (form: XXXX-XXXX-XXXX-XXXX): ");
+        
+        String cardNumber = scanner.nextLine();
+        
+        boolean result = validateCardNumber(cardNumber);
+        
+        System.out.println("Card number " + cardNumber + ": " + (result ? "is valid" : "is invalid"));
+        
+        scanner.close();
+    }
+}
