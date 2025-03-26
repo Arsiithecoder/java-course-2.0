@@ -1,0 +1,25 @@
+// URL Validator
+
+import java.util.Scanner;
+
+public class Project {
+    public static boolean validateUrl(String url) {
+        String urlRegex = "^(http://|https://|ftp://)[^\\s]+$";
+        
+        return url != null && url.matches(urlRegex);
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the URL: ");
+        
+        String url = scanner.nextLine();
+        
+        boolean result = validateUrl(url);
+        
+        System.out.println(result);
+        
+        scanner.close();
+    }
+}
