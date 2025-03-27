@@ -1,0 +1,41 @@
+//PIN-code validator
+
+import java.util.Scanner;
+
+public class Project {
+    public static boolean validatePin(String pin) {
+        if (pin == null) {
+            return false;
+        }
+        
+        if (pin.length() != 4 && pin.length() != 6) {
+            return false;
+        }
+        
+        for (char ch : pin.toCharArray()) {
+            if (!Character.isDigit(ch)) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter your PIN-code (4 or 6 numbers):");
+        
+        String pin = scanner.nextLine();
+        
+        boolean result = validatePin(pin);
+        
+        if (result) {
+            System.out.println("PIN-code is correct.");
+        } else {
+            System.out.println("Invalid PIN-code.");
+        }
+        
+        scanner.close();
+    }
+}
