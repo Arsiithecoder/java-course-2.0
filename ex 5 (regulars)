@@ -1,0 +1,41 @@
+//CVV-code Validator
+
+import java.util.Scanner;
+
+public class Project {
+    public static boolean validateCVV(String cvv) {
+        if (cvv == null) {
+            return false;
+        }
+        
+        if (cvv.length() != 3) {
+            return false;
+        }
+        
+        for (char ch : cvv.toCharArray()) {
+            if (!Character.isDigit(ch)) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter your CVV-code (3 numbers):");
+        
+        String cvv = scanner.nextLine();
+        
+        boolean result = validateCVV(cvv);
+        
+        if (result) {
+            System.out.println("CVV-code is correct.");
+        } else {
+            System.out.println("Invalid CVV-code.");
+        }
+        
+        scanner.close();
+    }
+}
