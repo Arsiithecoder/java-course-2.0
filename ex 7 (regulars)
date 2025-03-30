@@ -1,0 +1,37 @@
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter your text:");
+        String message = scanner.nextLine();
+        scanner.close();
+        
+        String result = extractQuotedText(message);
+        
+        System.out.println(result);
+    }
+    
+    public static String extractQuotedText(String message) {
+        String regex = "\"([^\"]+)\"";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(message);
+        
+        StringBuilder resultBuilder = new StringBuilder();
+        
+        while (matcher.find()) {
+            String match = matcher.group(1);
+            resultBuilder.append(match).append(", ");
+        }
+        
+        String result = resultBuilder.toString();
+        if (result.length() > 0) {
+            result = result.substring(0, result.length() - 2);
+        }
+        
+        return result;
+    }
+}
