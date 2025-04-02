@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter the text with a date:");
+        String message = scanner.nextLine();
+        scanner.close();
+        
+        String result = extractDate(message);
+        
+        System.out.println(result);
+    }
+    
+    public static String extractDate(String message) {
+        String regex = "\\b(0[1-9]|[12][0-9]|3[01])\\.(0[1-9]|1[0-2])\\.([0-9]{4})\\b";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(message);
+        
+        if (matcher.find()) {
+            return matcher.group();
+        } else {
+            return "There wasn't found any date in the text.";
+        }
+    }
+}
