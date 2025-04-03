@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Project {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter the text with a link:");
+        String message = scanner.nextLine();
+        scanner.close();
+        
+        String result = extractUrl(message);
+        
+        System.out.println(result);
+    }
+    
+    public static String extractUrl(String message) {
+        String regex = "\\b(https?://[^\\s]+)\\b";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(message);
+        
+        if (matcher.find()) {
+            return matcher.group();
+        } else {
+            return "There wasn't found any links.";
+        }
+    }
+}
