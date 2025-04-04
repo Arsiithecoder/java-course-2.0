@@ -1,0 +1,178 @@
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Project {
+    // Track the player's current location
+    private static String currentRoom = "entrance";
+    // Track items the player has collected
+    private static boolean hasKey = false;
+    private static boolean hasTreasure = false;
+    // Track if the game is running
+    private static boolean gameRunning = true;
+    // Scanner for user input
+    private static final Scanner scanner = new Scanner(System.in);
+    // Map of rooms and their descriptions
+    private static final Map<String, String> rooms = new HashMap<>();
+    
+    public static void main(String[] args) {
+        // Initialize room descriptions
+        initializeGame();
+        
+        System.out.println("==== CAVE ADVENTURE ====");
+        System.out.println("Find the treasure and escape! Type 'help' for commands.");
+        
+        // Main game loop
+        while (gameRunning) {
+            // Show current room description
+            System.out.println("\n" + rooms.get(currentRoom));
+            
+            // Special room interactions
+            checkRoomInteractions();
+            
+            // Get player command
+            System.out.print("\nWhat will you do? > ");
+            String command = scanner.nextLine().toLowerCase();
+            processCommand(command);
+        }
+        
+        scanner.close();
+    }
+    
+    private static void initializeGame() {
+        // Create room descriptions
+        rooms.put("entrance", "You stand at the ENTRANCE of a dark cave. A cool breeze flows from the NORTH.");
+        rooms.put("cavern", "You're in a large CAVERN with stalactites hanging from the ceiling. " +
+                 "There's a narrow passage to the EAST and the cave entrance is to the SOUTH.");
+        rooms.put("tunnel", "You're in a narrow TUNNEL. Water drips from the ceiling. " +
+                 "The tunnel continues NORTH and there's a cavern to the WEST.");
+        rooms.put("treasure", "You're in a small chamber filled with ancient artifacts. " +
+                 "A TREASURE chest sits in the center. The only exit is SOUTH.");
+        rooms.put("locked", "You're facing a LOCKED door with a keyhole. " + 
+                 "The tunnel continues SOUTH.");
+    }
+    
+    private static void checkRoomInteractions() {
+        // Add special interactions based on current room
+        if (currentRoom.equals("treasure") && !hasTreasure) {
+            System.out.println("* You see a shiny treasure chest here! *");
+        }
+        if (currentRoom.equals("tunnel") && !hasKey) {
+            System.out.println("* You see a rusty key on the ground! *");
+        }
+    }
+    
+    private static void processCommand(String command) {
+        switch (command) {
+            case "north":
+            case "n":
+                movePlayer("north");
+                break;
+            case "south":
+            case "s":
+                movePlayer("south");
+                break;
+            case "east":
+            case "e":
+                movePlayer("east");
+                break;
+            case "west":
+            case "w":
+                movePlayer("west");
+                break;
+            case "take key":
+                if (currentRoom.equals("tunnel") && !hasKey) {
+                    System.out.println("You pick up the rusty key.");
+                    hasKey = true;
+                } else {
+                    System.out.println("There is no key here.");
+                }
+                break;
+            case "take treasure":
+                if (currentRoom.equals("treasure") && !hasTreasure) {
+                    System.out.println("You found the treasure! Now find your way out of the cave.");
+                    hasTreasure = true;
+                } else {
+                    System.out.println("There is no treasure here.");
+                }
+                break;
+            case "use key":
+                if (currentRoom.equals("locked") && hasKey) {
+                    System.out.println("You unlock the door and enter a new chamber!");
+                    currentRoom = "treasure";
+                } else if (!hasKey) {
+                    System.out.println("You don't have a key.");
+                } else {
+                    System.out.println("There's nothing to unlock here.");
+                }
+                break;
+            case "help":
+                System.out.println("\nCommands: north/n, south/s, east/e, west/w, take key, take treasure, use key, quit");
+                break;
+            case "quit":
+                System.out.println("Thanks for playing!");
+                gameRunning = false;
+                break;
+            default:
+                System.out.println("I don't understand that command. Type 'help' for a list of commands.");
+        }
+        
+        // Check win condition
+        if (currentRoom.equals("entrance") && hasTreasure) {
+            System.out.println("\n***** CONGRATULATIONS! *****");
+            System.out.println("You escaped the cave with the treasure!");
+            System.out.println("Thanks for playing!");
+            gameRunning = false;
+        }
+    }
+    
+    private static void movePlayer(String direction) {
+        switch (currentRoom) {
+            case "entrance":
+                if (direction.equals("north")) {
+                    currentRoom = "cavern";
+                } else {
+                    System.out.println("You can't go that way.");
+                }
+                break;
+            case "cavern":
+                if (direction.equals("south")) {
+                    currentRoom = "entrance";
+                } else if (direction.equals("east")) {
+                    currentRoom = "tunnel";
+                } else {
+                    System.out.println("You can't go that way.");
+                }
+                break;
+            case "tunnel":
+                if (direction.equals("west")) {
+                    currentRoom = "cavern";
+                } else if (direction.equals("north")) {
+                    if (hasKey) {
+                        currentRoom = "locked";
+                    } else {
+                        System.out.println("The path continues but you see a locked door ahead. You might need a key.");
+                    }
+                } else if (direction.equals("south")) {
+                    System.out.println("That passage is too narrow to enter.");
+                } else {
+                    System.out.println("You can't go that way.");
+                }
+                break;
+            case "locked":
+                if (direction.equals("south")) {
+                    currentRoom = "tunnel";
+                } else {
+                    System.out.println("You can't go that way.");
+                }
+                break;
+            case "treasure":
+                if (direction.equals("south")) {
+                    currentRoom = "locked";
+                } else {
+                    System.out.println("You can't go that way.");
+                }
+                break;
+        }
+    }
+}
